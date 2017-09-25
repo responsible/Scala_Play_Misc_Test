@@ -8,10 +8,8 @@ import play.api.mvc.{AbstractController, ControllerComponents}
 
 @Singleton
 class RESTController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
-  def login = Auth.BasicAuth {
-    Action { request =>
-      Ok(JsonResponse())
-    }
+  def login = Action { request =>
+    Ok(JsonResponse())
   }
 
   def publicResource = Action { request =>
