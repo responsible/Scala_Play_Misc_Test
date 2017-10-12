@@ -22,9 +22,9 @@ class AuthFilter @Inject()(implicit override val mat: Materializer, exec: Execut
     }
   }
 
-  private def getUserAndPassFromHttpAuthHeader(request: RequestHeader): Option[List[String]] = {
+  private def getUserAndPassFromHttpAuthHeader(requestHeader: RequestHeader): Option[List[String]] = {
     for {
-      authHeader <- request.headers.get("Authorization")
+      authHeader <- requestHeader.headers.get("Authorization")
       parts <- authHeader.split(' ').drop(1).headOption
     } yield new String(Base64.decodeBase64(parts.getBytes)).split(':').toList
   }
