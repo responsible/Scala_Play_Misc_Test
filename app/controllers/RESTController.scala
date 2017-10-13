@@ -27,4 +27,8 @@ class RESTController @Inject()(cc: ControllerComponents) extends AbstractControl
       )))
     }
   }
+
+  def calc(number: Int, plus: Int) = Action { request =>
+    Ok(JsonResponse(data = Json.obj("number" -> (number + plus))))
+  }
 }

@@ -75,6 +75,45 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 ###
 POST     /api/login                 controllers.RESTController.login
 
+###
+#  tags:
+#    - RESTful api
+#  summary: play framework test calc
+#  parameters:
+#    - name: number
+#      description: Just a number
+#  responses:
+#    '200':
+#      description: success
+#      schema:
+#        properties:
+#          code:
+#            type: integer
+#          data:
+#            type: object
+#          msg:
+#            type: string
+#      examples:
+#        application/json:
+#          code: 200
+#          data:
+#            number: 1
+#    '400':
+#      description: bad request
+#      schema:
+#        properties:
+#          code:
+#            type: integer
+#            default: 400
+#          data:
+#            type: object
+#            default: {}
+#          msg:
+#            type: string
+#            default: Bad request
+###
+GET      /api/calc/:number          controllers.RESTController.calc(number: Int, plus: Int ?= 0)
+
 GET     /api/publicResource         controllers.RESTController.publicResource
 
 ### NoDocs ###
