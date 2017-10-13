@@ -4,26 +4,78 @@
 # ~~~~
 
 # An example controller showing a sample home page
+### NoDocs ###
 GET     /                           controllers.HomeController.index
+
 GET     /print/:message             controllers.HomeController.print(message)
+
+### NoDocs ###
 GET     /redirect                   controllers.HomeController.redirect
+
+### NoDocs ###
 GET     /flashtest                  controllers.HomeController.flashTest
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
 GET     /message                    controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
+### NoDocs ###
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 ###
+#  tags:
+#    - RESTful api
 #  summary: play framework test login
+#  parameters:
+#    - name: credential
+#      in: body
+#      description: The user info
+#      schema:
+#        required:
+#          - username
+#        properties:
+#          username:
+#            type: string
+#            default: "admin"
+#          password:
+#            type: string
+#            default: "123456"
 #  responses:
-#    200:
-#      description: success
+#    '200':
+#      description: Login success
+#      schema:
+#        properties:
+#          code:
+#            type: integer
+#          data:
+#            type: object
+#          msg:
+#            type: string
+#      examples:
+#        application/json:
+#          code: 200
+#          data:
+#            id: 1
+#            name: "admin"
+#    '401':
+#      description: Auth failed
+#      schema:
+#        properties:
+#          code:
+#            type: integer
+#            default: 401
+#          data:
+#            type: object
+#            default: {}
+#          msg:
+#            type: string
+#            default: Wrong username or password
 ###
-GET     /api/login                  controllers.RESTController.login
+POST     /api/login                 controllers.RESTController.login
 
 GET     /api/publicResource         controllers.RESTController.publicResource
 
+### NoDocs ###
 GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)

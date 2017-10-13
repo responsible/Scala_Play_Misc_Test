@@ -12,7 +12,11 @@ import scala.concurrent.Future
 @Singleton
 class RESTController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   def login = Action { request =>
-    Ok(JsonResponse())
+    if (request.body.asJson.get == Json.obj("username" -> "admin", "password" -> "123456")) Ok(JsonResponse(data = Json.obj(
+      "id" -> 1,
+      "name" -> "admin"
+    )))
+    else Unauthorized(JsonResponse(msg = "Wrong username or password", code = 401))
   }
 
   def publicResource = Action.async {
