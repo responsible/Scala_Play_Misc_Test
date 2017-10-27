@@ -25,7 +25,8 @@ libraryDependencies ++= Seq(
   "org.flywaydb" % "flyway-core" % "4.2.0",
   "org.flywaydb" %% "flyway-play" % "4.0.0",
   "org.postgresql" % "postgresql" % "42.1.4",
-  "org.webjars" % "swagger-ui" % "2.2.0"
+  "org.webjars" % "swagger-ui" % "2.2.0",
+  "com.enragedginger" %% "akka-quartz-scheduler" % "1.6.1-akka-2.5.x"
 )
 
 swaggerDomainNameSpaces := Seq("models")
